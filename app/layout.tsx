@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackgroundOrnaments from "@/components/BackgroundOrnaments";
+import FloatingRadioPlayer from "@/components/FloatingRadioPlayer";
 import { detectLang } from "@/lib/i18n";
 
 const fraunces = Fraunces({
@@ -61,6 +62,7 @@ export default async function RootLayout({
       <body className="flex min-h-full flex-col text-ink">
         <BackgroundOrnaments />
         <Header />
+        <FloatingRadioPlayer />
         <main className="relative flex-1">{children}</main>
         <Footer />
       </body>

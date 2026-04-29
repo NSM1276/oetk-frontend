@@ -23,6 +23,9 @@
   --animate-spin-reverse-slow: spin-reverse-slow 65s linear infinite;
   --animate-spin-very-slow: spin-very-slow 90s linear infinite;
   --animate-drift: drift 35s ease-in-out infinite;
+
+  /* Z-index for floating radio player (between header z-40 and mobile overlay z-50) */
+  --z-45: 45;
 }
 
 @keyframes spin-slow {
@@ -66,6 +69,13 @@ body {
 ::selection {
   background: var(--color-burgundy);
   color: var(--color-cream);
+}
+
+/* Custom z-index utilities */
+@layer utilities {
+  .z-45 {
+    z-index: 45;
+  }
 }
 
 /* Тонкая горизонтальная линия с орнаментом — для разделителей секций */
