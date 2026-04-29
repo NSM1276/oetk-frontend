@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# oetk-frontend
 
-## Getting Started
+Фронтенд для сайта ÖTK (Österreichisch-Tadschikische Kulturvereinigung). Next.js 15 + React 19 + Tailwind CSS v4 + TypeScript. Контент тянется из Joomla через REST API.
 
-First, run the development server:
+## Запуск локально
 
 ```bash
+npm install
+cp .env.example .env.local   # заполнить JOOMLA_API_TOKEN
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Открыть http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Структура
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/                  страницы App Router
+├── layout.tsx        общий layout (Header + Footer)
+├── page.tsx          главная (Hero + список статей)
+├── articles/
+│   ├── page.tsx      список всех статей
+│   └── [slug]/       одна статья по alias
+└── about/            «Дар бораи мо»
 
-## Learn More
+components/           переиспользуемые компоненты
+├── Header.tsx
+├── Footer.tsx
+├── Hero.tsx
+└── ArticleCard.tsx
 
-To learn more about Next.js, take a look at the following resources:
+lib/
+├── config.ts         базовый URL и токен Joomla из .env
+└── joomla.ts         клиент REST API (пока mock-данные)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Подключение к Joomla
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Сейчас `lib/joomla.ts` отдаёт mock-статьи, чтобы был виден дизайн. Когда появится Joomla API Token и CORS настроен, раскомментировать `joomlaFetch` в `lib/joomla.ts` и заменить заглушки на реальные запросы:
 
-## Deploy on Vercel
+- `GET /v1/content/articles` — список статей
+- `GET /v1/content/articles/{id}` — одна статья
+- `GET /v1/content/categories` — категории
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Авторизация: заголовок `X-Joomla-Token: <token>`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Деплой
+
+Проект готов к деплою на Vercel. Инициализировать git → запушить → подключить в Vercel → задать переменные окружения из `.env.example`.
