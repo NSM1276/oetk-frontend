@@ -20,7 +20,7 @@ export const LANGUAGES: Record<
     label: "TJ",
     // У вас в Joomla таджикский контент живёт в контейнере ru-RU
     // (sef=tg) — выбор «Вариант A» из прошлой сессии.
-    joomlaCode: "ru-RU",
+    joomlaCode: "tg-TJ",
     dateLocale: "ru-RU",
     path: "/",
   },
@@ -41,10 +41,7 @@ export const LANGUAGES: Record<
   ru: {
     slug: "ru",
     label: "RU",
-    // TODO: когда добавите настоящий русский Content Language в Joomla
-    // (например, ru-RU будет переименован, или появится отдельный код),
-    // подставьте сюда правильный joomlaCode.
-    joomlaCode: "ru-RU__placeholder",
+    joomlaCode: "ru-RU",
     dateLocale: "ru-RU",
     path: "/ru",
   },
