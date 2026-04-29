@@ -16,6 +16,39 @@
   /* Fonts */
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-inter);
+
+  /* Анимации фоновых орнаментов. Циклы 35-90s — движение заметно,
+     но не отвлекает от чтения. */
+  --animate-spin-slow: spin-slow 50s linear infinite;
+  --animate-spin-reverse-slow: spin-reverse-slow 65s linear infinite;
+  --animate-spin-very-slow: spin-very-slow 90s linear infinite;
+  --animate-drift: drift 35s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes spin-reverse-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+@keyframes spin-very-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(24px, -18px) rotate(20deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-slow,
+  .animate-spin-reverse-slow,
+  .animate-spin-very-slow,
+  .animate-drift {
+    animation: none;
+  }
 }
 
 html {

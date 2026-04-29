@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BackgroundOrnaments from "@/components/BackgroundOrnaments";
 import { detectLang } from "@/lib/i18n";
 
 const fraunces = Fraunces({
@@ -57,9 +58,10 @@ export default async function RootLayout({
       lang={lang}
       className={`${fraunces.variable} ${inter.variable} h-full`}
     >
-      <body className="flex min-h-full flex-col bg-cream text-ink">
+      <body className="flex min-h-full flex-col text-ink">
+        <BackgroundOrnaments />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="relative flex-1">{children}</main>
         <Footer />
       </body>
     </html>
