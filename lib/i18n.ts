@@ -17,7 +17,7 @@ export const LANGUAGES: Record<
 > = {
   tg: {
     slug: "tg",
-    label: "TG",
+    label: "TJ",
     // У вас в Joomla таджикский контент живёт в контейнере ru-RU
     // (sef=tg) — выбор «Вариант A» из прошлой сессии.
     joomlaCode: "ru-RU",
