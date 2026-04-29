@@ -205,10 +205,9 @@ export async function getArticles(
   opts: { limit?: number; language?: string; category?: number } = {},
 ): Promise<Article[]> {
   const params = new URLSearchParams();
-  // Берём с запасом — фильтр по языку делаем на нашей стороне,
-  // чтобы включать статьи с языком "*" (Alle / All Languages)
-  params.set("page[limit]", String(Math.min((opts.limit ?? 20) * 4, 200)));
+  params.set("page[limit]", String(opts.limit ?? 20));
   params.set("filter[state]", "1");
+  if (opts.language) params.set("filter[language]", opts.language);
   if (opts.category) params.set("filter[category]", String(opts.category));
 
   try {
@@ -216,19 +215,11 @@ export async function getArticles(
       joomlaFetch<JoomlaArticle[]>(`/content/articles?${params.toString()}`),
       loadCategories(),
     ]);
-    let articles = await Promise.all(
+    const articles = await Promise.all(
       json.data.map((a) => mapArticle(a, cats)),
     );
-
-    // Фильтруем по языку: показываем статьи конкретного языка + "Alle" (*)
-    if (opts.language) {
-      articles = articles.filter(
-        (a) => a.language === opts.language || a.language === "*",
-      );
-    }
-
     articles.sort((a, b) => (a.created < b.created ? 1 : -1));
-    return articles.slice(0, opts.limit ?? 20);
+    return articles;
   } catch (e) {
     console.error("[joomla] getArticles failed:", e);
     return [];
@@ -256,6 +247,7 @@ export async function getArticlesPaginated(opts: {
   params.set("page[limit]", String(perPage));
   params.set("page[offset]", String(offset));
   params.set("filter[state]", "1");
+  if (opts.language) params.set("filter[language]", opts.language);
   if (opts.category) params.set("filter[category]", String(opts.category));
 
   try {
@@ -264,17 +256,9 @@ export async function getArticlesPaginated(opts: {
       loadCategories(),
     ]);
 
-    let articles = await Promise.all(
+    const articles = await Promise.all(
       json.data.map((a) => mapArticle(a, cats)),
     );
-
-    // Включаем статьи конкретного языка + "Alle" (*)
-    if (opts.language) {
-      articles = articles.filter(
-        (a) => a.language === opts.language || a.language === "*",
-      );
-    }
-
     articles.sort((a, b) => (a.created < b.created ? 1 : -1));
 
     // Считаем сколько всего страниц
