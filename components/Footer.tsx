@@ -178,7 +178,7 @@ export default function Footer() {
             href="http://s1091003060.online.de/administrator"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-cream/20 transition hover:text-cream/50 text-[10px] normal-case tracking-normal"
+            className="text-cream/40 transition hover:text-cream/70 text-[11px] normal-case tracking-normal"
           >
             Admin
           </a>
