@@ -174,6 +174,14 @@ export default function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-6 py-6 text-[11px] uppercase tracking-[0.22em] text-cream/40 md:flex-row md:items-center">
           <span>© {new Date().getFullYear()} ÖTK · Wien</span>
           <span>{t.rights}</span>
+          <a
+            href="http://s1091003060.online.de/administrator"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cream/20 transition hover:text-cream/50 text-[10px] normal-case tracking-normal"
+          >
+            Admin
+          </a>
         </div>
       </div>
     </footer>
