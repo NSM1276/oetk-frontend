@@ -1,4 +1,5 @@
 import type { LangSlug } from "@/lib/i18n";
+import OrgTimeline from "@/components/OrgTimeline";
 
 const CONTENT = {
   tg: {
@@ -154,6 +155,8 @@ export default function AboutContent({ lang }: { lang: LangSlug }) {
           </div>
         </section>
       )}
+
+      <OrgTimeline lang={lang} />
     </div>
   );
 }

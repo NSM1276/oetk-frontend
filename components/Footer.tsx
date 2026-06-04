@@ -6,19 +6,15 @@ import { usePathname } from "next/navigation";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { MENU, STRINGS, detectLang } from "@/lib/i18n";
 
-// Те же соцсети что у вас на Joomla. URL подставите прямо в этом файле.
 const SOCIALS = [
-  { label: "Facebook", href: "#" },
-  { label: "Instagram", href: "#" },
-  { label: "YouTube", href: "#" },
-  { label: "X / Twitter", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Pinterest", href: "#" },
+  { label: "Facebook", href: "https://www.facebook.com/share/1EFPpgZoim/?mibextid=wwXIfr" },
+  { label: "Instagram", href: "https://www.instagram.com/tadschikische__kulturgemeinde?igsh=bGUyN2ZjZ3NvcDI0" },
+  { label: "YouTube", href: "https://youtube.com/channel/UCnKJzLbbQPtmPRzfKZy5Skw?si=tCvgBLAkiePzaTYs" },
+  { label: "TikTok", href: "https://www.tiktok.com/@tajik_kulturgemeinde" },
 ];
 
-// Контакты. Адрес — placeholder; поправьте на реальный почтовый.
 const CONTACT = {
-  address: "Wien, Österreich",
+  address: "Flachgasse 22/1A, 1150 Wien",
   phone: "+43 6656 5830 000",
   email: "contact@oetk.org",
 };
@@ -62,6 +58,8 @@ export default function Footer() {
                 <a
                   key={s.label}
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-cream/70 transition hover:text-gold-soft"
                 >
                   {s.label}

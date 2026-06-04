@@ -5,6 +5,9 @@ import SectionHeading from "@/components/SectionHeading";
 import PullQuote from "@/components/PullQuote";
 import Newsletter from "@/components/Newsletter";
 import Reveal from "@/components/Reveal";
+import MissionReveal from "@/components/MissionReveal";
+import TestimonialCards from "@/components/TestimonialCards";
+
 import { getArticles } from "@/lib/joomla";
 import { LANGUAGES, SECTIONS, type LangSlug } from "@/lib/i18n";
 
@@ -28,6 +31,8 @@ export default async function HomeContent({ lang }: { lang: LangSlug }) {
   return (
     <>
       <Hero lang={lang} />
+
+      <MissionReveal lang={lang} />
 
       {featured ? (
         <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
@@ -73,6 +78,8 @@ export default async function HomeContent({ lang }: { lang: LangSlug }) {
       )}
 
       <PullQuote lang={lang} />
+
+      <TestimonialCards lang={lang} />
 
       {archive.length > 0 && (
         <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
