@@ -5,7 +5,9 @@ export const alt = "ÖTK — Österreichisch-Tadschikische Kulturgemeinde";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OgImage() {
+export default async function OgImage() {
+  const logoUrl = "https://nasim.at/logo-gold.png";
+
   return new ImageResponse(
     (
       <div
@@ -21,34 +23,6 @@ export default function OgImage() {
           overflow: "hidden",
         }}
       >
-        {/* Subtle geometric background accent */}
-        <div
-          style={{
-            position: "absolute",
-            width: 600,
-            height: 600,
-            borderRadius: "50%",
-            border: "1px solid rgba(184,146,74,0.12)",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            display: "flex",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            width: 420,
-            height: 420,
-            borderRadius: "50%",
-            border: "1px solid rgba(184,146,74,0.08)",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            display: "flex",
-          }}
-        />
-
         {/* Top gold line */}
         <div
           style={{
@@ -62,20 +36,15 @@ export default function OgImage() {
           }}
         />
 
-        {/* ÖTK monogram */}
-        <div
-          style={{
-            fontSize: 96,
-            fontWeight: 300,
-            color: "#b8924a",
-            letterSpacing: "0.1em",
-            lineHeight: 1,
-            marginBottom: 24,
-            display: "flex",
-          }}
-        >
-          ÖTK
-        </div>
+        {/* Actual logo */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logoUrl}
+          width={220}
+          height={220}
+          style={{ objectFit: "contain" }}
+          alt="ÖTK"
+        />
 
         {/* Gold divider */}
         <div
@@ -83,7 +52,7 @@ export default function OgImage() {
             width: 60,
             height: 1,
             backgroundColor: "#b8924a",
-            marginBottom: 28,
+            margin: "24px 0",
             display: "flex",
           }}
         />
@@ -91,17 +60,15 @@ export default function OgImage() {
         {/* Full name */}
         <div
           style={{
-            fontSize: 26,
+            fontSize: 28,
             fontWeight: 300,
             color: "rgba(250,246,238,0.85)",
             letterSpacing: "0.15em",
             textTransform: "uppercase",
             textAlign: "center",
             maxWidth: 800,
-            lineHeight: 1.5,
+            lineHeight: 1.6,
             display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
           }}
         >
           Österreichisch-Tadschikische Kulturgemeinde
@@ -110,10 +77,10 @@ export default function OgImage() {
         {/* Tagline */}
         <div
           style={{
-            marginTop: 20,
+            marginTop: 16,
             fontSize: 18,
-            color: "rgba(250,246,238,0.45)",
-            letterSpacing: "0.08em",
+            color: "rgba(250,246,238,0.4)",
+            letterSpacing: "0.1em",
             display: "flex",
           }}
         >
@@ -124,9 +91,9 @@ export default function OgImage() {
         <div
           style={{
             position: "absolute",
-            bottom: 36,
+            bottom: 32,
             fontSize: 15,
-            color: "rgba(184,146,74,0.6)",
+            color: "rgba(184,146,74,0.55)",
             letterSpacing: "0.12em",
             display: "flex",
           }}
