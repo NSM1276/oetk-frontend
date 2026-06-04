@@ -62,7 +62,7 @@ export default async function RootLayout({
       <body className="flex min-h-full flex-col text-ink">
         <BackgroundOrnaments />
         <Header />
-        <FloatingRadioPlayer />
+        {/* <FloatingRadioPlayer /> */}
         <main className="relative flex-1">{children}</main>
         <Footer />
       </body>
