@@ -87,20 +87,6 @@ export default async function OgImage() {
           Wien · Austria · Tajikistan
         </div>
 
-        {/* Bottom URL */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 32,
-            fontSize: 15,
-            color: "rgba(184,146,74,0.55)",
-            letterSpacing: "0.12em",
-            display: "flex",
-          }}
-        >
-          nasim.at
-        </div>
-
         {/* Bottom gold line */}
         <div
           style={{
