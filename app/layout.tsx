@@ -31,17 +31,18 @@ export const metadata: Metadata = {
       "Пули фарҳангӣ миёни Австрия ва Тоҷикистон. Чорабиниҳо, лоиҳаҳо, ҷамъият.",
     images: [
       {
-        url: "/logo-og.png",
-        width: 800,
-        height: 800,
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
         alt: "ÖTK — Österreichisch-Tadschikische Kulturgemeinde",
       },
     ],
     siteName: "ÖTK",
+    type: "website",
   },
   twitter: {
-    card: "summary",
-    images: ["/logo-og.png"],
+    card: "summary_large_image",
+    images: ["/opengraph-image"],
   },
 };
 
